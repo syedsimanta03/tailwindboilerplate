@@ -1,18 +1,15 @@
 const tailwindcss = require('tailwindcss')
 
-const IS_DEVELOPMENT = process.env.NODE_ENV === 'development'
+//const IS_DEVELOPMENT = process.env.NODE_ENV === 'development'
 
 const plugins = []
 plugins.push(tailwindcss)
 
-if (!IS_DEVELOPMENT) {
   const purgecss = require('@fullhuman/postcss-purgecss')
 
-  class TailwindExtractor {
-    static extract(content) {
-      return content.match(/[A-z0-9-:\/]+/g) || []
-    }
-  }
+const TailwindExtractor = (content) => {
+  return content.match(/[A-Za-z0-9-_:\/]+/g) || [];
+};
 
   plugins.push(
     purgecss({
@@ -25,6 +22,5 @@ if (!IS_DEVELOPMENT) {
       ],
     })
   )
-}
 
 module.exports = { plugins }
