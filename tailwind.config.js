@@ -1,11 +1,11 @@
 module.exports = {
   purge: {
-    mode: 'all',
-    content: ['./src/**/*.html'],
+    mode: "all",
+    content: ["./src/**/*.html"],
   },
   theme: {
     extend: {},
   },
   variants: {},
-  plugins: [],
-}
+  plugins: [require("@tailwindcss/ui")],
+};
